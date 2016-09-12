@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <form v-on:submit.prevent="handleIt">
+        <form @submit.prevent="handleIt">
           <span class="error" v-if="!message">You must enter a message!</span>
           <br>
           <textarea v-model="message"></textarea>
