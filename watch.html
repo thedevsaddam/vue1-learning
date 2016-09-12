@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue watch properties</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>Name: {{ fullName }}</h3>
+        <input type="text" v-model="first" placeholder="First name">
+        <input type="text" v-model="last" placeholder="Last name">
+
+        <pre>
+            {{ $data | json }}
+        </pre>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                first: 'Saddam',
+                last: 'Hossain',
+                fullName: 'Saddam Hossain'
+            },
+            watch: {
+                first: function(){
+                    this.fullName = this.first + ' ' + this.last;
+                },
+                last: function(){
+                    this.fullName = this.first + ' '+ this.last;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
