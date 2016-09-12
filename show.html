@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue show and if</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+    <style media="screen">
+      .error{color: red;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <form>
+          <span class="error" v-if="!message">You must enter a message!</span>
+          <br>
+          <textarea v-model="message"></textarea>
+          <br>
+          <button type="submit" name="button" v-show="message">Send messge</button>
+        </form>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data:{
+                message: ''
+            }
+        });
+    </script>
+</body>
+</html>
