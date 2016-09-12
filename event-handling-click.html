@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue event handling | @click</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <h1>{{ counter }}</h1>
+      <button type="button" name="button" @click="increment">Increment</button>
+      <button type="button" name="button" @click="decrement">Decrement</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data:{
+                counter: 0
+            },
+            methods: {
+              increment: function(){
+                  this.counter = this.counter+1;
+              },
+
+              decrement: function(){
+                  this.counter = this.counter-1;
+              },
+            }
+        });
+    </script>
+</body>
+</html>
