@@ -7,3 +7,4 @@ Playing with vue.js v1.0
 3. Event handling: @submit
 4. Event handling: @click
 5. Component in vue
+6. Computed properties
