@@ -8,3 +8,4 @@ Playing with vue.js v1.0
 4. Event handling: @click
 5. Component in vue
 6. Computed properties
+7. Vue watch (when to use computed properties and watch)
