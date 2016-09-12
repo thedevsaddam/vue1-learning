@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue computed proterties</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h3>Skill: {{ skill}}</h3>
+        <input type="text" v-model="points">
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                points: 300,
+            },
+            computed: {
+                skill: function(){
+                    if(this.points <= 300){
+                        return 'Beginner';
+                    }else if (this.points >300 && this.points <=600) {
+                        return 'Intermediate';
+                    }else{
+                        return 'Advanced';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
