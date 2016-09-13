@@ -9,3 +9,4 @@ Playing with vue.js v1.0
 5. Component in vue
 6. Computed properties
 7. Vue watch (when to use computed properties and watch)
+8. Subscription plan in vue (Exercise)
