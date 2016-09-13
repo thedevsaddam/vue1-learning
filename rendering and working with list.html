@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rendering and working with lists</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+    <style>
+        .completed{ text-decoration: line-through}
+        #app li { cursor: pointer}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li :class="{ 'completed': task.completed }"
+                v-for="task in tasks"
+                @click="toggleCompletedFor(task)"
+            >
+            {{ task.body }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+
+            data:{
+                tasks: [
+                    { body: 'Go to the store', completed: true },
+                    { body: 'Buy some book', completed: false },
+                    { body: 'Have a cup of coffee', completed: false },
+                    { body: 'Do some coding stuff', completed: false }
+                ]
+            },
+
+            methods: {
+                toggleCompletedFor: function(task){
+                    task.completed = !task.completed;
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
