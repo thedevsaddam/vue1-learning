@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscription plan</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+    <style media="screen">
+        #app span, button{ margin: 10px 5px 10px 0px;} .selected{ color: green; }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <div v-for="plan in plans">
+            <plan :plan="plan" :active.sync="active"></plan>
+        </div>
+    </div>
+
+    <template id="plan-template">
+        <div>
+
+            <span>{{ plan.name }}</span> ==>
+            <span>{{ plan.price }}/month</span>
+
+            <button type="button" @click="setActivePlan"
+                                  v-show="plan.name != active.name"
+            >
+                {{ isUpgrade? 'Upgrade' : 'Downgrade' }}
+            </button>
+
+            <span v-else class="selected">Selected</span>
+
+        </div>
+    </template>
+
+    <script>
+        new Vue({
+            el: "#app",
+
+            data: {
+
+                plans: [
+                    {name: 'Enterprise', price: 100},
+                    {name: 'Pro', price: 50},
+                    {name: 'Personal', price: 10},
+                    {name: 'Free', price: 0}
+                ],
+
+                active: {}
+
+            },
+
+            components: {
+
+                plan: {
+
+                    template: '#plan-template',
+
+                    props: ['plan', 'active'],
+
+                    methods: {
+                        setActivePlan: function(){
+                            this.active = this.plan;
+                        }
+                    },
+
+                    computed: {
+                        isUpgrade: function(){
+                            return this.plan.price > this.active.price;
+                        }
+                    }
+                }
+
+            }
+        });
+    </script>
+</body>
+</html>
