@@ -11,3 +11,4 @@ Playing with vue.js v1.0
 7. Vue watch (when to use computed properties and watch)
 8. Subscription plan in vue (Exercise)
 9. Rendering and working with lists
+10. Custom component
