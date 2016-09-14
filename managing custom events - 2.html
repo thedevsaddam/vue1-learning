@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Managing custom events</title>
+    <title>Managing custom events - 2</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
 </head>
 <body>
-
     <h4>Open console to see the output</h4>
-
-    <v-input></v-input>
+    <v-input @message-to-parent="receiveTheChildMessageToParent"></v-input>
 
     <script>
         Vue.component('v-input', {
@@ -32,11 +30,12 @@
         new Vue({
             el: "body",
 
-            events: {
-                'message-to-parent': function(message){
-                    console.log('Message received in parents: '+ message);
+            methods: {
+                receiveTheChildMessageToParent: function(message){
+                    console.log('Parent received the message from child: ' + message);
                 }
             }
+
         });
     </script>
 </body>
