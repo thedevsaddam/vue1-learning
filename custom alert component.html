@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom alert component</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+    <style>
+        .center{width: 50%; margin: 0 auto;}
+        .Alert{ position: relative; background: rgba(22, 160, 133,1.0); border: 1px solid rgba(26, 188, 156,1.0); padding: 1em; width: 350px; margin-bottom: 10px; color: white; border-radius: 3px;}
+        .Alert--Success{ background: rgba(39, 174, 96,1.0); border: 1px solid rgba(46, 204, 113,1.0); }
+        .Alert--Error{ background: rgba(192, 57, 43,1.0); border: 1px solid rgba(231, 76, 60,1.0); }
+        .Alert--Warning{ background: rgba(243, 156, 18,1.0); border: 1px solid rgba(241, 196, 15,1.0); }
+        .Alert__close{ position: absolute; top: 1em; right: 1em; font-weight: bolder; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="center">
+        <h1>Some cool alert component</h1>
+        <alert type="default">
+            <strong>Default!</strong> You account created succcessfully.
+        </alert>
+
+        <alert type="success">
+            <strong>Success!</strong> You account has been updated.
+        </alert>
+
+        <alert type="error">
+            <strong>Error!</strong> Unable to update your account.
+        </alert>
+
+        <alert type="warning">
+            <strong>Warning!</strong> Username '<i>thedevsaddam</i>' already exist.
+        </alert>
+    </div>
+
+
+    <template id="alert-template">
+        <div :class="alertClasses" v-if="show">
+            <slot></slot>
+            <span class="Alert__close" @click="show = false">x</span>
+        </div>
+    </template>
+
+    <script>
+        Vue.component('alert', {
+            template: '#alert-template',
+
+            props: ['type'],
+
+            data: function(){
+                return { show: true };
+            },
+
+            computed: {
+                alertClasses: function(){
+                    var type = this.type;
+                    return {
+                        'Alert': true,
+                        'Alert--Success': type == 'success',
+                        'Alert--Error': type == 'error',
+                        'Alert--Warning': type == 'warning'
+                    }
+                }
+            }
+
+        })
+        new Vue({
+            el: "body"
+        });
+    </script>
+</body>
+</html>
