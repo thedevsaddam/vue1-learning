@@ -19,4 +19,7 @@ Playing with vue.js v1.0
 15. [Custom event and dispatch an event - 2 (this time listen event using component directive)](src/managing custom events - 2.html) --> [Output](https://cdn.rawgit.com/thedevsaddam/vue1-learning/master/src/managing custom events - 2.html)
 16. [Vue mixins](src/mixins.html) --> [Output](https://cdn.rawgit.com/thedevsaddam/vue1-learning/master/src/mixins.html)
 
+
+*** Note: Please always open your browser console to see output. In input field you must hit enter :p ***
+
 #### Thank you :)
