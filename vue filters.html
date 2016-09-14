@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue filters</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+</head>
+<body>
+
+    <h3>uppercase: {{ 'hello world' | uppercase}}</h3>
+    <h3>lowercase: {{ 'HELLO WORLD' | lowercase}}</h3>
+    <h3>currency: {{ '10' | currency}}</h3>
+    <h4>Dump to Json</h4>
+    <pre>{{ {name:'Saddam H', occupation: 'Software Engineer', username: 'thedevsaddam'} | json}}</pre>
+
+    <script>
+        new Vue({
+            el: "body"
+        });
+    </script>
+</body>
+</html>
