@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Managing custom events</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+</head>
+<body>
+
+    <v-input></v-input>
+
+    <script>
+        Vue.component('v-input', {
+
+            template : '<input v-model="message" @keyup.enter="storeMessage">' ,
+
+            data: function(){
+                return { message: ''}
+            },
+
+            methods: {
+                storeMessage: function(){
+                    this.$dispatch('message-to-parent', this.message);
+                    this.message = '';
+                }
+            }
+
+        });
+
+        new Vue({
+            el: "body",
+
+            events: {
+                'message-to-parent': function(message){
+                    console.log('Message received in parents: '+ message);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
