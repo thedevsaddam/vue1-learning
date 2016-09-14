@@ -14,3 +14,4 @@ Playing with vue.js v1.0
 10. Custom component
 11. Custom component and playing with different methods
 12. Custom Alert component
+13. Filters
