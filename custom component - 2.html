@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue custom component 2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+    <style>
+        .completed span{ text-decoration: line-through; color: red;}
+        #app li { cursor: pointer}
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <tasks :list="tasks"> </tasks>
+
+
+    </div>
+
+    <template id="task-template">
+        <h4>
+            My tasks
+            <span v-if="remaining">: {{ remaining }}</span>
+        </h4>
+        <ul v-show="list.length">
+            <li :class="{ 'completed': task.completed }"
+                v-for="task in list"
+                @click="toggleCompletedFor(task)"
+            >
+
+            <span>{{ task.body }}</span>
+
+            <strong @click="deleteTask(task)">&nbsp;x</strong>
+
+            </li>
+        </ul>
+        <h5 v-else>No task remaining!</h5>
+        <button type="button" @click="clearCompleted">Clear completed</button>
+    </template>
+
+    <script>
+
+        Vue.component('tasks', {
+
+            template: '#task-template',
+
+            props: ['list'],
+
+            methods: {
+                toggleCompletedFor: function(task){
+                    task.completed = !task.completed;
+                },
+
+                isCompleted: function(task){
+                    return task.completed;
+                },
+
+                inProgress: function(task){
+                    return ! this.isCompleted(task);
+                },
+
+                deleteTask: function(task){
+                    this.list.$remove(task);
+                },
+
+                clearCompleted: function(){
+                    this.list = this.list.filter(this.inProgress);
+                }
+            },
+
+            computed: {
+
+                remaining: function(){
+                    var vm = this;
+                    return this.list.filter(this.inProgress).length;
+                }
+            }
+
+        });
+
+        new Vue({
+            el: "#app",
+
+            data:{
+                tasks: [
+                    { body: 'Go to the store', completed: true },
+                    { body: 'Buy some book', completed: false },
+                    { body: 'Have a cup of coffee', completed: false },
+                    { body: 'Do some coding stuff', completed: false }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
