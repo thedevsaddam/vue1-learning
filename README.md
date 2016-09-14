@@ -12,3 +12,4 @@ Playing with vue.js v1.0
 8. Subscription plan in vue (Exercise)
 9. Rendering and working with lists
 10. Custom component
+11. Custom component and playing with different methods
