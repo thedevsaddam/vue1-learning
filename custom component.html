@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue custom component</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+    <style>
+        .completed{ text-decoration: line-through}
+        #app li { cursor: pointer}
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <tasks :list="tasks"> </tasks>
+
+        <tasks :list="[{body: 'This data may come form another soruce.', completed:false}, {body: 'But now it\'s fine', completed:true}]"> </tasks>
+
+    </div>
+
+    <template id="task-template">
+        <ul>
+            <li :class="{ 'completed': task.completed }"
+                v-for="task in list"
+                @click="toggleCompletedFor(task)"
+            >
+            {{ task.body }}
+            </li>
+        </ul>
+    </template>
+
+    <script>
+
+        Vue.component('tasks', {
+
+            template: '#task-template',
+
+            props: ['list'],
+
+            methods: {
+                toggleCompletedFor: function(task){
+                    task.completed = !task.completed;
+                }
+            }
+
+        });
+
+        new Vue({
+            el: "#app",
+
+            data:{
+                tasks: [
+                    { body: 'Go to the store', completed: true },
+                    { body: 'Buy some book', completed: false },
+                    { body: 'Have a cup of coffee', completed: false },
+                    { body: 'Do some coding stuff', completed: false }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
