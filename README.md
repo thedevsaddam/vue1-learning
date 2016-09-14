@@ -16,3 +16,4 @@ Playing with vue.js v1.0
 12. Custom Alert component
 13. Filters
 14. Custom event and dispatch an event
+15. Custom event and dispatch an event - 2 (this time listen event using component directive)
