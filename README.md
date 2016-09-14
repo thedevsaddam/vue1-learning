@@ -2,7 +2,7 @@
 Playing with vue.js v1.0
 
 ##index:
-1. Hello Vue
+1. [Hello Vue](blob/master/hello.html) --> [Output](https://cdn.rawgit.com/thedevsaddam/vue1-learning/master/hello.html)
 2. Show and if directive in vue
 3. Event handling: @submit
 4. Event handling: @click
